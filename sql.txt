@@ -1,0 +1,103 @@
+mysql> show tables;
++-------------------+
+| Tables_in_NewsTag |
++-------------------+
+| ######            |
+| NewsList          |
+| category          |
+| comment           |
+| edit20141225      |
+| editSec20150129   |
+| editTask          |
+| taskEvaluation    |
+| user              |
++-------------------+
+
+mysql> desc NewsList;
++-------------+--------------+------+-----+-------------------+----------------+
+| Field       | Type         | Null | Key | Default           | Extra          |
++-------------+--------------+------+-----+-------------------+----------------+
+| docId       | bigint(20)   | NO   | PRI | NULL              | auto_increment |
+| cate        | int(11)      | YES  |     | 0                 |                |
+| subCate     | int(11)      | YES  |     | 0                 |                |
+| thiCate     | int(11)      | YES  |     | 0                 |                |
+| title       | text         | NO   |     | NULL              |                |
+| content     | longtext     | NO   |     | NULL              |                |
+| Tagged      | varchar(255) | YES  |     | NULL              |                |
+| source      | varchar(255) | NO   |     | NULL              |                |
+| sourceId    | varchar(255) | NO   |     | NULL              |                |
+| ccncCate    | int(11)      | YES  |     | 0                 |                |
+| ccncSubCate | int(11)      | YES  |     | 0                 |                |
+| ccncThiCate | int(11)      | YES  |     | 0                 |                |
+| Timestamp   | timestamp    | YES  |     | CURRENT_TIMESTAMP |                |
+| markedlabel | text         | YES  |     | NULL              |                |
++-------------+--------------+------+-----+-------------------+----------------+
+14 rows in set (0.00 sec)
+
+mysql> desc category;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| cateId      | bigint(20)   | NO   | PRI | NULL    |       |
+| cateLabel   | varchar(255) | NO   |     | NULL    |       |
+| superCateId | bigint(20)   | NO   | PRI | NULL    |       |
+| cateLevel   | varchar(255) | NO   |     | NULL    |       |
+| cateSource  | varchar(255) | NO   |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> desc edit20141225;
++-----------------+------------+------+-----+-------------------+-------+
+| Field           | Type       | Null | Key | Default           | Extra |
++-----------------+------------+------+-----+-------------------+-------+
+| personId        | bigint(20) | NO   | PRI | NULL              |       |
+| docId           | bigint(20) | NO   | MUL | NULL              |       |
+| surfaceId       | int(11)    | NO   | PRI | NULL              |       |
+| Timestamp       | timestamp  | YES  |     | CURRENT_TIMESTAMP |       |
+| markedlabel     | int(11)    | YES  |     | NULL              |       |
+| ccncConsist     | int(4)     | YES  |     | 0                 |       |
+| interConsist    | int(4)     | YES  |     | 0                 |       |
+| SubCateSelected | int(4)     | YES  |     | 0                 |       |
++-----------------+------------+------+-----+-------------------+-------+
+8 rows in set (0.00 sec)
+
+mysql> desc editSec20150129;
++-------------+------------+------+-----+-------------------+-------+
+| Field       | Type       | Null | Key | Default           | Extra |
++-------------+------------+------+-----+-------------------+-------+
+| personId    | bigint(20) | NO   | PRI | NULL              |       |
+| docId       | bigint(20) | NO   | MUL | NULL              |       |
+| surfaceId   | int(11)    | NO   | PRI | NULL              |       |
+| Cate        | bigint(20) | NO   |     | NULL              |       |
+| SubCate     | bigint(20) | YES  |     | NULL              |       |
+| RedoCate    | bigint(20) | YES  |     | NULL              |       |
+| RedoSubCate | bigint(20) | YES  |     | NULL              |       |
+| Timestamp   | timestamp  | YES  |     | CURRENT_TIMESTAMP |       |
++-------------+------------+------+-----+-------------------+-------+
+8 rows in set (0.00 sec)
+
+mysql> desc editTask;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| username | varchar(30) | YES  | MUL | NULL    |       |
+| personId | bigint(20)  | YES  | MUL | NULL    |       |
+| task     | varchar(30) | YES  |     | NULL    |       |
+| editable | int(4)      | YES  |     | 1       |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc taskEvaluation;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| username      | varchar(255) | NO   |     | NULL    |       |
+| personId      | int(11)      | NO   | PRI | NULL    |       |
+| task          | varchar(255) | NO   | PRI | NULL    |       |
+| accomplished  | int(11)      | YES  |     | 0       |       |
+| quantity      | int(11)      | YES  |     | 0       |       |
+| ccncConsistNr | int(11)      | YES  |     | 0       |       |
+| ccncNr        | int(11)      | YES  |     | 0       |       |
+| ccncAcc       | char(255)    | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
