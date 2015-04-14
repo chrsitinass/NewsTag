@@ -3,8 +3,8 @@ session_start();
 include "connect.php";
 //重新登录
 if ($_SESSION['username'] == "") {
-	header('Location: indexTag.php?flag=3');
-	exit;
+  header('Location: indexTag.php?flag=3');
+  exit;
 }
 $ccncLabel = $_GET['ccncLabel'];
 //查询ccncLabel对应的markedlabel
