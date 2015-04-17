@@ -7,29 +7,19 @@
       <p class="modal-title" id="sModalLabel<?php echo $index?>" style="font-size: 25px;">来源统计</p>
     </div>
     <div class="modal-body">
-      <div class="table">
-        <table class="table table-hover table-bordered">
-          <thead>
-            <?php
-              foreach ($row13 as $source) {
-                echo "<th>$source</th>";
-              }
-            ?>  
-          </thead>
+        <table class="table table-hover table-bordered" >
           <tbody>
             <?php
-            echo "<tr>";
-            foreach ($row13 as $source) {
-              $sql14 = "SELECT COUNT(*) FROM NewsList WHERE cate = $cate_id AND source = $source";
-              $result14 = mysql_query($sql14);
-              $row14 = mysql_fetch_array($result14);
-              echo "<td>$row14[0]</td>";
-            }
-            echo "</tr>";
+              while (($l < $total_length) AND ($tag_cate[$l] == $key)) {
+                echo "<tr>";
+                echo "<td>$Tagged[$l]</td>";
+                echo "<td>$tag_cnt[$l]</td>";
+                echo "</tr>";
+                $l = $l + 1;
+              }
             ?>
           </tbody>
         </table>
-      </div>
     </div>
   </div>
 </div>
