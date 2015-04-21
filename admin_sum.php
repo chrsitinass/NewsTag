@@ -23,19 +23,22 @@
               " LEFT JOIN category b on a.ccncCate = b. cateId WHERE a.ccncCate = b.cateId".
               " AND a.source != 'xhs.trs' GROUP BY a.ccncCate ORDER BY a.ccncCate";
               $result9 = mysql_query($sql9);
-              /*
-              $sql11 = "SELECT COUNT(*) FROM NewsList WHERE cate > 0";
-              $result11 = mysql_query($sql11);
-              $row11 = mysql_fetch_array($result11);
-              $total = $row11[0];
-              */
-
+                            
               $sql11 = "SELECT Tagged, COUNT(*) AS cnt, ccncCate FROM NewsList GROUP BY ccncCate, Tagged ORDER BY ccncCate;";
               $result11 = mysql_query($sql11);
+              
+              $sql10 = "SELECT ccncCate, count(*) AS cnt FROM NewsList".
+              " WHERE source != 'xhs.trs' AND locate('Sec',Tagged) <= 0".
+              " GROUP BY ccncCate ORDER BY ccncCate;";
+              $result10 = mysql_query($sql10);
+              
               $Tagged = array();
               $tag_cnt = array();
               $tag_cate = array();
               $total_length = 0;
+              $secNum = array();
+              $secId = array();
+
               while ($row11 = mysql_fetch_object($result11)) {
                 array_push($Tagged, $row11->Tagged);
                 array_push($tag_cnt, $row11->cnt);
@@ -43,7 +46,15 @@
                 $total_length += 1;
               }
               
+              while ($row10 = mysql_fetch_object($result10)) {
+              	if ($row10->ccncCate > 0) {
+              		array_push($secId, $row10->ccncCate);
+              		array_push($secNum, $row10->cnt);
+              	}
+              }
+
               $index = 0;
+              $id = 0;
               $cate_id = array();
               while ($row9 = mysql_fetch_object($result9)) {
                 array_push($cate_id, $row9->ccncCate);
@@ -61,7 +72,13 @@
                 echo "<td>$row9->cnt</td>";
                 //echo "<td>$row12[0] / $total * 100 %</td>";
                 echo "<td><a href='#' data-toggle='modal' data-target='#sourceModal$index'>查看</a></td>";
-                echo "<td><a href='#' data-toggle='modal' data-target='#seCateModal$index'>查看</a></td>";
+                //echo "<td><a href='#' data-toggle='modal' data-target='#seCateModal$index'>查看</a></td>";
+                if ($secId[$id] == $row9->ccncCate) {
+                	echo "<td>$secNum[$id]</td>";
+                	$id = $id + 1;
+                } else {
+                	echo "<td>0</td>";
+                }
                 echo "</tr>";
                 //include "seCateModal.php";
                 $index = $index + 1;
