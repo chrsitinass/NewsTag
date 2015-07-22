@@ -77,7 +77,7 @@ $finish_personId = array();
         </div>
       </div>
       <?php
-      include "admin_sum.php";
+      //include "admin_sum.php";
       ?>
       <?php
       $sql6 = "SELECT DISTINCT task FROM editTask ORDER BY task";

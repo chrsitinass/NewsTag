@@ -1,0 +1,83 @@
+form {
+  table-layout: fixed;
+}
+
+form td {
+  height: 40px;
+}
+
+form .key {
+  width: 100px;
+}
+
+input, textarea {
+  display: block;
+  margin: 0;
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 18px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+}
+
+input, textarea {
+  padding: 5px;
+  transition: box-shadow 0.2s, border 0.2s;
+  border: solid 1px #707070;
+  box-shadow: 0 0 1px 1px #969696;
+  font-size: 16px;
+}
+
+input:focus,
+input.focus,
+textarea:focus,
+textarea.focus {
+  border: solid 3px black;
+  box-shadow: 0;
+}
+
+input[type="radio"] {
+  z-index: 1;
+  float: left;
+  width: 1em;
+  height: 1em;
+  font-size: 1em;
+  margin: 4px 4px 0 0;
+  cursor: pointer;
+  color: #666666;
+  box-shadow: 0 0 0 0 #fff;
+}
+
+input[type="submit"],
+input[type="reset"] {
+  width: 60px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+input[type="checkbox"] {
+  width: 15px;
+  display: inline-block;
+  margin: 5px;
+}
+
+#form div {
+  margin-bottom: 10px;
+}
+
+#form label {
+  line-height: 30px;
+  padding-left: 5px;
+  display: block;
+}
+
+.radio {
+  display: inline-block;
+  margin: 0 10px 0 10px;
+  margin-bottom: 0 !important;
+}

@@ -47,10 +47,10 @@
               }
               
               while ($row10 = mysql_fetch_object($result10)) {
-              	if ($row10->ccncCate > 0) {
-              		array_push($secId, $row10->ccncCate);
-              		array_push($secNum, $row10->cnt);
-              	}
+                if ($row10->ccncCate > 0) {
+                  array_push($secId, $row10->ccncCate);
+                  array_push($secNum, $row10->cnt);
+                }
               }
 
               $index = 0;
@@ -74,10 +74,10 @@
                 echo "<td><a href='#' data-toggle='modal' data-target='#sourceModal$index'>查看</a></td>";
                 //echo "<td><a href='#' data-toggle='modal' data-target='#seCateModal$index'>查看</a></td>";
                 if ($secId[$id] == $row9->ccncCate) {
-                	echo "<td>$secNum[$id]</td>";
-                	$id = $id + 1;
+                  echo "<td>$secNum[$id]</td>";
+                  $id = $id + 1;
                 } else {
-                	echo "<td>0</td>";
+                  echo "<td>0</td>";
                 }
                 echo "</tr>";
                 //include "seCateModal.php";

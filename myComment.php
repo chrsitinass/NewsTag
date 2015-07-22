@@ -57,7 +57,7 @@ if ($total2[0] == 0) {
           <li><p class="navbar-text">Hi, 管理员!</p></li>
           <li><a href="indexTag.php">注销</a></li>
         </ul>
-      </div>
+      </div><!--/.nav-collapse -->
     </div>
   </div>
   <div class="container">

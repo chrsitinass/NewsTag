@@ -32,7 +32,10 @@ $total = $row2[0];
 $sql0 = "SELECT * FROM $task WHERE personId=$personId AND surfaceId=$surfaceId";
 $result0 = mysql_query($sql0);
 $row0 = mysql_fetch_object($result0);
-$sql3 = "SELECT * FROM category WHERE cateId=$row0->Cate AND superCateId=0";
+if ($row0->RedoCate == NULL) {
+  $sql3 = "SELECT * FROM category WHERE cateId=$row0->Cate AND superCateId=0";
+}
+else $sql3 = "SELECT * FROM category WHERE cateId=$row0->RedoCate AND superCateId=0";
 $result3 = mysql_query($sql3);
 $row3 = mysql_fetch_object($result3);
 ?>
@@ -145,6 +148,7 @@ $row3 = mysql_fetch_object($result3);
       echo "var category = new Array();\n";
       echo "var dic = new Array();\n";
       echo "var reverse_dic = new Array();\n";
+      
       echo "var cate_init = \"$row3->cateLabel\";\n";
       $number = 0;
       while ($row = mysql_fetch_object($result)) {

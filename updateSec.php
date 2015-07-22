@@ -27,9 +27,8 @@ if ($_GET['Cate'] != "") {
     $sql2 = "UPDATE $task SET RedoCate = $CateId WHERE personId=$personId AND surfaceId=$surfaceId";
     mysql_query($sql2);
   }
-} else {
+} else
   $CateId = $row3->Cate;
-}
 if ($CateId == $row3->Cate) {
   $sql5 = "UPDATE $task SET RedoCate = NULL WHERE personId=$personId AND surfaceId=$surfaceId";
   mysql_query($sql5);

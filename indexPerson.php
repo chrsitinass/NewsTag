@@ -22,6 +22,7 @@ unset($_SESSION['task']);
     <title>ICST-个人主页</title>
   </head>
   <body>
+
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -52,15 +53,15 @@ unset($_SESSION['task']);
         </li>
       </ul>
       <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade in active" id="task">
-          <div class="table">
-            <table class="table table-hover table-bordered">
-              <thead>
-                <th>任务名称</th>
-                <th>完成进度</th>
-                <th>标注入口</th>
-              </thead>
-              <tbody>
+          <div class="tab-pane fade in active" id="task">
+        <div class="table">
+          <table class="table table-hover table-bordered">
+            <thead>
+              <th>任务名称</th>
+              <th>完成进度</th>
+              <th>标注入口</th>
+            </thead>
+            <tbody>
               <?php
               $sql = "SELECT * FROM editTask WHERE username='$username' ORDER BY task";
               $result = mysql_query($sql);
@@ -95,44 +96,46 @@ unset($_SESSION['task']);
                 }
               }
               ?>
-              </tbody>
-            </table>
+            </tbody>
+          </table>
+        </div>
           </div>
+          <div class="tab-pane fade" id="comment">
+        <div class="table">
+          <table class="table table-hover table-bordered">
+            <thead>
+              <th>任务</th>
+              <th width="60%">内容</th>
+              <th>时间</th>
+            </thead>
+            <tbody>
+            <?php
+              $sql = "SELECT * FROM comment WHERE username='$username' ORDER BY Timestamp DESC";
+              $result = mysql_query($sql);
+              while ($row = mysql_fetch_object($result)) {
+                echo "<tr>";
+                echo "<td>$row->task</td>";
+                echo "<td>$row->content</td>";
+                echo "<td>$row->Timestamp</td>";
+                echo "</tr>";
+              }
+            ?>
+            </tbody>
+          </table>
         </div>
-        <div class="tab-pane fade" id="comment">
-          <div class="table">
-            <table class="table table-hover table-bordered">
-              <thead>
-                <th>任务</th>
-                <th width="60%">内容</th>
-                <th>时间</th>
-              </thead>
-              <tbody>
-              <?php
-                $sql = "SELECT * FROM comment WHERE username='$username' ORDER BY Timestamp DESC";
-                $result = mysql_query($sql);
-                while ($row = mysql_fetch_object($result)) {
-                  echo "<tr>";
-                  echo "<td>$row->task</td>";
-                  echo "<td>$row->content</td>";
-                  echo "<td>$row->Timestamp</td>";
-                  echo "</tr>";
-                }
-              ?>
-              </tbody>
-            </table>
           </div>
-        </div>
-        <div class="tab-pane fade" id="news">
-          <?php include "forAdmin/news.php"; ?>
-        </div>
+          <div class="tab-pane fade" id="news">
+            <?php
+          include "forAdmin/news.php";
+          ?>
+          </div>
       </div>
     </div>
     <footer>
       <div class="center">
         <center>Copyright: ICST @ PKU</center>
         <center>Chrome 10 / Safari 5 / Opera 11 or higher version, with 1024x768 
-                or higher resolution for best views.</center>
+        or higher resolution for best views.</center>
       </div>
     </footer>
   </body>

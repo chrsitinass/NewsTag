@@ -38,9 +38,8 @@
                          data-dismiss="modal">关闭
                       </button>
                    </div>
-                </div>
-              </div>
-          </div>
+                </div><!-- /.modal-content -->
+          </div><!-- /.modal -->
         </li>
         <li><a href="indexTag.php">注销</a></li>
       </ul>
